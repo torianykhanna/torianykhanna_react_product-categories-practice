@@ -44,11 +44,13 @@ export const App = () => {
   });
 
   const toggleCategory = categoryId => {
-    setSelectedCategoryIds(prev =>
-      prev.includes(categoryId)
-        ? prev.filter(id => id !== categoryId)
-        : [...prev, categoryId],
-    );
+    setSelectedCategoryIds(prev => {
+      if (prev.includes(categoryId)) {
+        return prev.filter(id => id !== categoryId);
+      }
+
+      return [...prev, categoryId];
+    });
   };
 
   const resetAllFilters = () => {
